@@ -24,5 +24,16 @@ after_success:
   - docker push ayodejioseni/multi-server
   - docker push ayodejioseni/multi-worker
 
-    
-    
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: ap-southeast-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: "elasticbeanstalk-ap-southeast-2-926600887224"
+  bucket_path: multi-docker
+  on:
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  
